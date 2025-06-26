@@ -55,7 +55,7 @@ public class HashCodeEx1 {
 
 }
 
-class Student{
+class Student implements Comparable<Student>{
    /*private*/ final String name;
    /*private*/ final String surname;
    /*private*/ final int course;
@@ -75,17 +75,26 @@ class Student{
                 '}';
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        Student student = (Student) o;
-        return course == student.course &&
-                Objects.equals(name, student.name) &&
-                Objects.equals(surname, student.surname);
-    }
+//    @Override
+//    public boolean equals(Object o) {
+//        if (o == null || getClass() != o.getClass()) return false;
+//        Student student = (Student) o;
+//        return course == student.course &&
+//                Objects.equals(name, student.name) &&
+//                Objects.equals(surname, student.surname);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return name.length()*7 + surname.length()*11 + course*53;
+//    }
 
     @Override
-    public int hashCode() {
-        return name.length()*7 + surname.length()*11 + course*53;
+    public int compareTo(Student o) {
+        int res = name.compareTo(o.name);
+        if(res == 0){
+            res = surname.compareTo(o.surname);
+        }
+        return res;
     }
 }
