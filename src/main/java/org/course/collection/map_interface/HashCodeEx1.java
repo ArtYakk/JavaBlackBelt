@@ -24,7 +24,18 @@ public class HashCodeEx1 {
         System.out.println("Students hashCodes");
         System.out.println("st1 " + st1.hashCode());
         System.out.println("st2 " + st2.hashCode());
+
+
+        System.out.println("Enhanced for loop");
+        for(Map.Entry<Student, Double> entry : map.entrySet()){
+            System.out.println(entry.getKey() + " : " + entry.getValue());
+        }
+
+        System.out.println("Foreach");
+        map.entrySet().forEach(System.out::println);
+        map.values().forEach(System.out::println);
     }
+
 }
 
 class Student{
