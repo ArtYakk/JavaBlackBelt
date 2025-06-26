@@ -34,14 +34,31 @@ public class HashCodeEx1 {
         System.out.println("Foreach");
         map.entrySet().forEach(System.out::println);
         map.values().forEach(System.out::println);
+
+        /* По достижении количества элементов 0.75*16 размер внутреннего массива увеличится в 2 раза
+        * */
+        Map<Integer, String> map2 = new HashMap<>(16, 0.75f);
+
+        /* Ключ должен быть иммутабельным, все поля должны быть final, а также и класс
+        можно сделать final, чтобы у него не было наследников, если ключ мутабелен,
+        изменив что-то в ключе, мы теряем свящь с объектом который хранится по этому
+        ключу
+        * */
+        System.out.println("Заур на месте? " + map.containsKey(st1));
+        System.out.println("Заура переводим с 3 на 1 курс");
+       // st1.course = 1;
+        System.out.println("А теперь Заур на месте? " + map.containsKey(st1));
+
+
+
     }
 
 }
 
 class Student{
-    String name;
-    String surname;
-    int course;
+   /*private*/ final String name;
+   /*private*/ final String surname;
+   /*private*/ final int course;
 
     public Student(String name, String surname, int course) {
         this.name = name;
