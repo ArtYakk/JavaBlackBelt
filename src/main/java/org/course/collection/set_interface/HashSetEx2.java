@@ -1,4 +1,4 @@
-package org.course.collection;
+package org.course.collection.set_interface;
 
 import java.util.HashSet;
 

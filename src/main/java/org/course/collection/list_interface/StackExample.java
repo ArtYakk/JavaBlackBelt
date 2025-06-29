@@ -1,4 +1,4 @@
-package org.course.collection;
+package org.course.collection.list_interface;
 
 public class StackExample {
     static void abc1(){

@@ -1,4 +1,4 @@
-package org.course.collection;
+package org.course.collection.list_interface;
 
 import java.util.ArrayList;
 import java.util.Objects;
