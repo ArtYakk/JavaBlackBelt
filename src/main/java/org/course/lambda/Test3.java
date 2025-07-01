@@ -1,5 +1,6 @@
 package org.course.lambda;
 import java.util.ArrayList;
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 public class Test3 {
@@ -14,6 +15,16 @@ public class Test3 {
     public static void main(String[] args) {
         ArrayList<Car> ourCars = createThreeCars(() -> new Car("Nissan Tiida", "Silver Metalic", 1.6));
         System.out.println(ourCars);
+
+        changeCar(ourCars.get(0), car -> {
+            car.color = "red";
+            car.engine += 1;
+            System.out.println("Upgraded car: " + car);
+        });
+    }
+
+    public static void changeCar(Car car, Consumer<Car> carConsumer){
+        carConsumer.accept(car);
     }
 }
 
