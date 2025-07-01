@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+import java.util.List;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class StudentInfo {
@@ -49,18 +51,7 @@ public class StudentInfo {
 //        }
 //    }
 }
-class StaticTest{
-    public static void hello(){
-        System.out.println("hello from PARENT");
-    }
-}
 
-class StaticTestChild extends StaticTest{
-
-    public static void hello(){
-        System.out.println("hello from CHILD");
-    }
-}
 
 class Test{
     public static void main(String[] args) {
@@ -103,6 +94,15 @@ class Test{
         Predicate<Student> predicate3 = predicate1.and(predicate2).negate();
         studentInfo.testStudents(students, predicate3);
 
+        Function<Student, Double> function = a -> a.avgGrade;
+        double result = avgOfSomething(students, function);
+        System.out.println(result);
+
+        System.out.println(avgOfSomething(students, a -> (double)a.course));
+        System.out.println(avgOfSomething(students, a -> (double)a.age));
+
+
+
 
 //                studentInfo.printStudentOverGrade(students, 7.7);
 //        System.out.println("-----------------------------------------------------------------------");
@@ -110,6 +110,16 @@ class Test{
 //        System.out.println("-----------------------------------------------------------------------");
 //        studentInfo.printStudentsMixCondition(students, 24, 8.9, 'm');
 
+    }
+    public static double avgOfSomething(List<Student> list, Function<Student, Double> function){
+        double result = 0;
+
+        for (Student s : list){
+            result += function.apply(s);
+        }
+        result = result/list.size();
+
+        return result;
     }
 }
 

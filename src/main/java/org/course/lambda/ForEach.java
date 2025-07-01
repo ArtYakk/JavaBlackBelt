@@ -28,6 +28,6 @@ public class ForEach {
             a = a*2;
             System.out.println(a);
         });
-        Consumer
+
     }
 }
