@@ -4,10 +4,20 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+import java.util.function.Predicate;
+
 public class StudentInfo {
-    void testStudents(ArrayList<Student> students, StudentChecks sc){
+    /*void testStudents(ArrayList<Student> students, StudentChecks sc){
         for(Student s : students){
             if(sc.check(s)){
+                System.out.println(s);
+            }
+        }
+    }*/
+
+    void testStudents(ArrayList<Student> students, Predicate<Student> p){
+        for(Student s : students){
+            if(p.test(s)){
                 System.out.println(s);
             }
         }
@@ -74,21 +84,27 @@ class Test{
 
         System.out.println(students);
 
-//        StudentInfo studentInfo = new StudentInfo();
+        StudentInfo studentInfo = new StudentInfo();
 //        studentInfo.testStudents(students, new CheckOverGrade());
-//        System.out.println("----------------------------------------------------------");
+        System.out.println("----------------------------------------------------------");
 //        studentInfo.testStudents(students, new StudentChecks() {
 //            @Override
 //            public boolean check(Student s) {
 //                return s.avgGrade > 8;
 //            }
 //        });
-//        System.out.println("----------------------------------------------------------");
-//        studentInfo.testStudents(students, s -> s.avgGrade > 8);
-//        System.out.println("----------------------------------------------------------");
-//        studentInfo.testStudents(students, s -> s.age < 24);
+        System.out.println("----------------------------------------------------------");
+        studentInfo.testStudents(students, s -> s.avgGrade > 9);
+        System.out.println("----------------------------------------------------------");
+        studentInfo.testStudents(students, s -> s.age < 24);
+        System.out.println("----------------------------------------------------------");
+        Predicate<Student> predicate1 = s -> s.avgGrade > 9;
+        Predicate<Student> predicate2 = s -> s.age < 24;
+        Predicate<Student> predicate3 = predicate1.and(predicate2).negate();
+        studentInfo.testStudents(students, predicate3);
 
-        //        studentInfo.printStudentOverGrade(students, 7.7);
+
+//                studentInfo.printStudentOverGrade(students, 7.7);
 //        System.out.println("-----------------------------------------------------------------------");
 //        studentInfo.printStudentUnderAge(students, 20);
 //        System.out.println("-----------------------------------------------------------------------");
