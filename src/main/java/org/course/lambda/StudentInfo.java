@@ -1,6 +1,8 @@
 package org.course.lambda;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class StudentInfo {
     void testStudents(ArrayList<Student> students, StudentChecks sc){
@@ -65,19 +67,26 @@ class Test{
         students.add(st4);
         students.add(st5);
 
-        StudentInfo studentInfo = new StudentInfo();
-        studentInfo.testStudents(students, new CheckOverGrade());
-        System.out.println("----------------------------------------------------------");
-        studentInfo.testStudents(students, new StudentChecks() {
-            @Override
-            public boolean check(Student s) {
-                return s.avgGrade > 8;
-            }
-        });
-        System.out.println("----------------------------------------------------------");
-        studentInfo.testStudents(students, s -> s.avgGrade > 8);
-        System.out.println("----------------------------------------------------------");
-        studentInfo.testStudents(students, s -> s.age < 24);
+        Collections.sort(students, Comparator.comparing((Student a) -> a.name)
+                .thenComparingInt(a -> a.age).reversed()
+                .thenComparingDouble(a -> a.avgGrade));
+
+
+        System.out.println(students);
+
+//        StudentInfo studentInfo = new StudentInfo();
+//        studentInfo.testStudents(students, new CheckOverGrade());
+//        System.out.println("----------------------------------------------------------");
+//        studentInfo.testStudents(students, new StudentChecks() {
+//            @Override
+//            public boolean check(Student s) {
+//                return s.avgGrade > 8;
+//            }
+//        });
+//        System.out.println("----------------------------------------------------------");
+//        studentInfo.testStudents(students, s -> s.avgGrade > 8);
+//        System.out.println("----------------------------------------------------------");
+//        studentInfo.testStudents(students, s -> s.age < 24);
 
         //        studentInfo.printStudentOverGrade(students, 7.7);
 //        System.out.println("-----------------------------------------------------------------------");
