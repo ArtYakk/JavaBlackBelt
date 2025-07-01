@@ -2,7 +2,6 @@ package org.course.collection.map_interface;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 public class HashCodeEx1 {
     public static void main(String[] args) {
@@ -21,7 +20,7 @@ public class HashCodeEx1 {
         boolean result = map.containsKey(st4);
         System.out.println("Result = " + result);
 
-        System.out.println("Students hashCodes");
+        System.out.println("Student hashCodes");
         System.out.println("st1 " + st1.hashCode());
         System.out.println("st2 " + st2.hashCode());
 
