@@ -24,9 +24,10 @@ public class Test6 {
 //                .forEach(System.out::println);
 
         //System.out.println(stream5.count());
-        System.out.println(stream5.distinct().count()); // Exception! stream после обработки
+//        System.out.println(stream5.distinct().count()); // Exception! stream после обработки
                                                         // нельзя переиспользовать
 
+        System.out.println(stream5.distinct().peek(System.out::println).count());
 
 
     }
