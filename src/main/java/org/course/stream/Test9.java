@@ -17,14 +17,20 @@ public class Test9 {
         students.add(st4);
         students.add(st5);
 
-       Student min =  students.stream()
-               .min((a,b) -> a.getAge() - b.getAge())
-               .get();
-       System.out.println(min);
+//       Student min =  students.stream()
+//               .min((a,b) -> a.getAge() - b.getAge())
+//               .get();
+//       System.out.println(min);
+//
+//        Student max =  students.stream()
+//                .max((a,b) -> a.getAge() - b.getAge())
+//                .get();
+//        System.out.println(max);
 
-        Student max =  students.stream()
-                .max((a,b) -> a.getAge() - b.getAge())
-                .get();
-        System.out.println(max);
+        students.stream()
+                .filter(a -> a.getAge() > 20)
+                .limit(2)
+                .forEach(System.out::println);
+
     }
 }
