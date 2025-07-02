@@ -2,6 +2,7 @@ package org.course.stream;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class Test2 {
     public static void main(String[] args) {
@@ -20,6 +21,10 @@ public class Test2 {
                 .filter(a -> a.getAge() > 22 && a.getAvgGrade() < 7.2)
                 .toList());
 
+        Stream<Student> stream = Stream.of(st1, st2, st3, st4, st5);
+        System.out.println("------------------Stream.of()-----------------------");
+        stream.forEach(System.out::println);
+        System.out.println("------------------Stream.of()-----------------------");
     }
 }
 
