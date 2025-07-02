@@ -17,6 +17,12 @@ public class Test2 {
         students.add(st3);
         students.add(st4);
         students.add(st5);
+
+        System.out.println("---------------------Отсортированный-лист----------------------------------");
+        students = students.stream().sorted((x,y) -> x.getName().compareTo(y.getName())).toList();
+        System.out.println(students);
+        System.out.println("---------------------Отсортированный-лист----------------------------------");
+
         System.out.println(students.stream()
                 .filter(a -> a.getAge() > 22 && a.getAvgGrade() < 7.2)
                 .toList());
