@@ -2,11 +2,12 @@ package org.course.stream;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Stream;
 
 public class Test2 {
     public static void main(String[] args) {
-        Student st1 = new Student("Alex", 'm', 25, 4, 8.3);
+        Student st1 = new Student("alex", 'm', 25, 4, 8.3);
         Student st2 = new Student("Nikolay", 'm', 28, 2, 6.4);
         Student st3 = new Student("Elena", 'f', 19, 1, 8.9);
         Student st4 = new Student("Petr", 'm', 35, 4, 7);
@@ -17,6 +18,18 @@ public class Test2 {
         students.add(st3);
         students.add(st4);
         students.add(st5);
+
+        System.out.println("====================================================");
+        students.stream()
+                .map(a -> {
+                    a.setName(a.getName().toUpperCase());
+                    return a;
+                })
+                .filter(a -> a.getSex() == 'f')
+                .sorted((a,b) -> a.getAge() - b.getAge())
+                .forEach(System.out::println);
+
+        System.out.println("====================================================");
 
         System.out.println("---------------------Отсортированный-лист----------------------------------");
         students = students.stream().sorted((x,y) -> x.getName().compareTo(y.getName())).toList();
