@@ -26,10 +26,22 @@ public class Test9 {
 //                .max((a,b) -> a.getAge() - b.getAge())
 //                .get();
 //        System.out.println(max);
+        students.stream()
+                .filter(a -> a.getAge() > 20)
+                .forEach(System.out::println);
+
+        System.out.println("-------------limit-2------------------------------------------");
 
         students.stream()
                 .filter(a -> a.getAge() > 20)
                 .limit(2)
+                .forEach(System.out::println);
+
+        System.out.println("--------------skip-2-----------------------------------------");
+
+        students.stream()
+                .filter(a -> a.getAge() > 20)
+                .skip(2)
                 .forEach(System.out::println);
 
     }
