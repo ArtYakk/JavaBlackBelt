@@ -8,7 +8,11 @@ public class CallableFactorial {
         ExecutorService executorService = Executors.newSingleThreadExecutor();
         Future<Integer> future = executorService.submit(new Factorial2(5));
         try {
+            System.out.println(future.isDone());
+            System.out.println("Хотим получить результат");
             factorialResult = future.get();
+            System.out.println("Получили результат");
+            System.out.println(future.isDone());
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
@@ -36,6 +40,7 @@ class Factorial2 implements Callable<Integer>{
         int result = 1;
         for (int i = 1; i <= f; i++) {
             result *= i;
+            Thread.sleep(1000);
         }
         return result;
     }
