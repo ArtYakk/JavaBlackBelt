@@ -9,7 +9,7 @@ public class Bankomat {
         new Employee("Zaur", lock);
         new Employee("Oleg", lock);
         new Employee("Elena", lock);
-        Thread.sleep(5000);
+       // Thread.sleep(5000);
         new Employee("Viktor", lock);
         new Employee("Marina", lock);
     }
@@ -27,9 +27,9 @@ class Employee extends Thread{
 
     @Override
     public void run() {
-        if(lock.tryLock()){
-            //        System.out.println(name + " ждет... ");
-            //        lock.lock();
+        //if(lock.tryLock()){
+                    System.out.println(name + " ждет... ");
+                    lock.lock();
             System.out.println(name + " пользуется банкоматом");
             try {
                 Thread.sleep(2000);
@@ -40,9 +40,9 @@ class Employee extends Thread{
             finally {
                 lock.unlock();
             }
-        } else {
-            System.out.println(name + " не хочет ждать в очереди");
-        }
+//        } else {
+//            System.out.println(name + " не хочет ждать в очереди");
+//        }
 
     }
 }

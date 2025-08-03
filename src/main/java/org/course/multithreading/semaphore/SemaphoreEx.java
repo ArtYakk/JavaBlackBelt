@@ -1,4 +1,4 @@
-package org.course.multithreading;
+package org.course.multithreading.semaphore;
 
 import java.util.concurrent.Semaphore;
 
